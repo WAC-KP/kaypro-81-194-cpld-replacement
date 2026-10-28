@@ -18,13 +18,9 @@ A while back I purchased a nonworking Kaypro 2x as a parts computer. It was dirt
 
 A web search revealed no viable solutions to the dead LSI chip. So I asked AI for help. At the suggestion (urging) of AI and to simplify code, the design moved away from RAM to SRAM. The end result was a working, stable Kaypro 2x. 
 
-Was it worth it? Perhaps, perhaps not. You can still find universal board Kaypros, working or not. PCBs are not too expensive until you hit shipping. Parts are reasonable but all combined you might just get lucky and find another Kaypro for less than the parts and labor.
+Was it worth it? Perhaps, perhaps not. You can still find universal board Kaypros, working or not. Prototype PCBs are not too expensive until you add in shipping. Parts are reasonable but all combined you might just get lucky and find another Kaypro for less than the parts and labor.
 
 That said, I believe it was worth it, simply based on the learning process and the side result of a functional Kaypro.
-
-## Building and installing
-
-
 
 
 ## Downloads & Project Files
@@ -47,6 +43,15 @@ Instead of hunting through folders, you can access the core design files for thi
 * *Note: Use the `.svf` file directly with your modified USB Blaster Clone and UrJTAG or OpenOCD software to program the chip.*
 
 ---
+
+## Building and installing
+
+* The PCB is designed to replace both U29 (81-194) and U55 (74LS373). Separate the PCB into the two daughter boards and mount the components. The two boards are connected by a 16 wire ribbon cable.
+* A single RST connection is provided (see the PCB)
+* To minimize risk of socket damage only use rounded header pins designed for interfacing with DIP sockets. 
+* 0805 surface mount capacitors and resistors are used to help reduce clutter and they can still be hand soldered. 
+* External power pins can be used to supply the required 5v for programming the CPLD or the CPLD can be programmed with the board installed. 
+* A heartbeat LED is provided as a visual indicator of functioning AFT1504.  
 
 
 ### Compiling pld with WinCUPL II
