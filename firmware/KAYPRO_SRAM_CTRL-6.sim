@@ -1,0 +1,424 @@
+%SIGNAL
+PIN  25 =  A15 
+PIN  29 =  BANK 
+PIN   5 =  CLK1 
+PIN   6 =  CLK2 
+PIN   8 =  CLK4 
+PIN  43 =  CLK16 
+PIN   4 =  CLK4K8 
+PIN  49 =  CNT0 
+PIN  50 =  CNT1 
+PIN  51 =  CNT2 
+PIN  52 =  CNT3 
+PIN  53 =  CNT4 
+PIN  54 =  CNT5 
+PIN  55 =  CNT6 
+PIN  56 =  CNT7 
+PIN  57 =  CNT8 
+PIN  58 =  CNT9 
+PIN  59 =  CNT10 
+PIN  60 =  CNT11 
+PIN  45 =  DIV0 
+PIN  46 =  DIV1 
+PIN  47 =  DIV2 
+PIN  48 =  DIV3 
+PIN   9 =  HEARTBEAT_LED 
+PIN  61 =  LEDCNT0 
+PIN  62 =  LEDCNT1 
+PIN  63 =  LEDCNT2 
+PIN  64 =  LEDCNT3 
+PIN  65 =  LEDCNT4 
+PIN  66 =  LEDCNT5 
+PIN  67 =  LEDCNT6 
+PIN  68 =  LEDCNT7 
+PIN  69 =  LEDCNT8 
+PIN  70 =  LEDCNT9 
+PIN  33 =  MREQ_N 
+PIN  26 =  RAM_EN_N 
+PIN  34 =  RD_N 
+PIN  31 =  RESET_N 
+PIN  24 =  ROM_EN_N 
+PIN  40 =  SRAM_A16 
+PIN  28 =  SRAM_OE_N 
+PIN  27 =  SRAM_WE_N 
+PIN  32 =  TCK 
+PIN   7 =  TDI 
+PIN  38 =  TDO 
+PIN  13 =  TMS 
+PIN  36 =  WR_N 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+CLK1 =>
+    DIV3
+
+CLK2 =>
+    DIV2
+
+CLK4 =>
+    DIV1
+
+CLK4K8 =>
+    CNT11
+
+CNT0.d  =>
+    !CNT0
+
+CNT0.ck  =>
+    CLK16
+
+CNT1.d  =>
+    CNT0 & !CNT1 & !CNT11
+  # CNT0 & !CNT1 & !CNT10
+  # CNT0 & !CNT1 & !CNT8
+  # CNT0 & !CNT1 & !CNT2
+  # !CNT0 & CNT1
+
+CNT1.ck  =>
+    CLK16
+
+CNT2.d  =>
+    !CNT1 & CNT2 & !CNT11
+  # !CNT1 & CNT2 & !CNT10
+  # !CNT1 & CNT2 & !CNT8
+  # CNT0 & CNT1 & !CNT2
+  # !CNT0 & CNT2
+
+CNT2.ck  =>
+    CLK16
+
+CNT3.d  =>
+    CNT0 & CNT1 & CNT2 & !CNT3 & !CNT11
+  # !CNT1 & CNT3 & !CNT11
+  # CNT0 & CNT1 & CNT2 & !CNT3 & !CNT10
+  # !CNT1 & CNT3 & !CNT10
+  # CNT0 & CNT1 & CNT2 & !CNT3 & !CNT8
+  # !CNT1 & CNT3 & !CNT8
+  # !CNT2 & CNT3
+  # !CNT0 & CNT3
+
+CNT3.ck  =>
+    CLK16
+
+CNT4.d  =>
+    CNT0 & CNT1 & CNT2 & CNT3 & !CNT4 & !CNT11
+  # !CNT3 & CNT4 & !CNT11
+  # !CNT1 & CNT4 & !CNT11
+  # CNT0 & CNT1 & CNT2 & CNT3 & !CNT4 & !CNT10
+  # !CNT3 & CNT4 & !CNT10
+  # !CNT1 & CNT4 & !CNT10
+  # CNT0 & CNT1 & CNT2 & CNT3 & !CNT4 & !CNT8
+  # !CNT3 & CNT4 & !CNT8
+  # !CNT1 & CNT4 & !CNT8
+  # !CNT2 & CNT4
+  # !CNT0 & CNT4
+
+CNT4.ck  =>
+    CLK16
+
+CNT5.d  =>
+    CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & !CNT5 & !CNT11
+  # !CNT4 & CNT5 & !CNT11
+  # !CNT3 & CNT5 & !CNT11
+  # !CNT1 & CNT5 & !CNT11
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & !CNT5 & !CNT10
+  # !CNT4 & CNT5 & !CNT10
+  # !CNT3 & CNT5 & !CNT10
+  # !CNT1 & CNT5 & !CNT10
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & !CNT5 & !CNT8
+  # !CNT4 & CNT5 & !CNT8
+  # !CNT3 & CNT5 & !CNT8
+  # !CNT1 & CNT5 & !CNT8
+  # !CNT2 & CNT5
+  # !CNT0 & CNT5
+
+CNT5.ck  =>
+    CLK16
+
+CNT6.d  =>
+    CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & !CNT6 & !CNT11
+  # !CNT5 & CNT6 & !CNT11
+  # !CNT4 & CNT6 & !CNT11
+  # !CNT3 & CNT6 & !CNT11
+  # !CNT1 & CNT6 & !CNT11
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & !CNT6 & !CNT10
+  # !CNT5 & CNT6 & !CNT10
+  # !CNT4 & CNT6 & !CNT10
+  # !CNT3 & CNT6 & !CNT10
+  # !CNT1 & CNT6 & !CNT10
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & !CNT6 & !CNT8
+  # !CNT5 & CNT6 & !CNT8
+  # !CNT4 & CNT6 & !CNT8
+  # !CNT3 & CNT6 & !CNT8
+  # !CNT1 & CNT6 & !CNT8
+  # !CNT2 & CNT6
+  # !CNT0 & CNT6
+
+CNT6.ck  =>
+    CLK16
+
+CNT7.d  =>
+    CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & !CNT7 & !CNT11
+  # !CNT6 & CNT7 & !CNT11
+  # !CNT5 & CNT7 & !CNT11
+  # !CNT4 & CNT7 & !CNT11
+  # !CNT3 & CNT7 & !CNT11
+  # !CNT1 & CNT7 & !CNT11
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & !CNT7 & !CNT10
+  # !CNT6 & CNT7 & !CNT10
+  # !CNT5 & CNT7 & !CNT10
+  # !CNT4 & CNT7 & !CNT10
+  # !CNT3 & CNT7 & !CNT10
+  # !CNT1 & CNT7 & !CNT10
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & !CNT7 & !CNT8
+  # !CNT6 & CNT7 & !CNT8
+  # !CNT5 & CNT7 & !CNT8
+  # !CNT4 & CNT7 & !CNT8
+  # !CNT3 & CNT7 & !CNT8
+  # !CNT1 & CNT7 & !CNT8
+  # !CNT2 & CNT7
+  # !CNT0 & CNT7
+
+CNT7.ck  =>
+    CLK16
+
+CNT8.d  =>
+    !CNT7 & CNT8 & !CNT11
+  # !CNT6 & CNT8 & !CNT11
+  # !CNT5 & CNT8 & !CNT11
+  # !CNT4 & CNT8 & !CNT11
+  # !CNT3 & CNT8 & !CNT11
+  # !CNT1 & CNT8 & !CNT11
+  # !CNT7 & CNT8 & !CNT10
+  # !CNT6 & CNT8 & !CNT10
+  # !CNT5 & CNT8 & !CNT10
+  # !CNT4 & CNT8 & !CNT10
+  # !CNT3 & CNT8 & !CNT10
+  # !CNT1 & CNT8 & !CNT10
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & CNT7 & !CNT8
+  # !CNT2 & CNT8
+  # !CNT0 & CNT8
+
+CNT8.ck  =>
+    CLK16
+
+CNT9.d  =>
+    CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & CNT7 & CNT8 & !CNT9 & !CNT11
+  # !CNT7 & CNT9 & !CNT11
+  # !CNT6 & CNT9 & !CNT11
+  # !CNT5 & CNT9 & !CNT11
+  # !CNT4 & CNT9 & !CNT11
+  # !CNT3 & CNT9 & !CNT11
+  # !CNT1 & CNT9 & !CNT11
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & CNT7 & CNT8 & !CNT9 & !CNT10
+  # !CNT7 & CNT9 & !CNT10
+  # !CNT6 & CNT9 & !CNT10
+  # !CNT5 & CNT9 & !CNT10
+  # !CNT4 & CNT9 & !CNT10
+  # !CNT3 & CNT9 & !CNT10
+  # !CNT1 & CNT9 & !CNT10
+  # !CNT8 & CNT9
+  # !CNT2 & CNT9
+  # !CNT0 & CNT9
+
+CNT9.ck  =>
+    CLK16
+
+CNT10.d  =>
+    !CNT9 & CNT10 & !CNT11
+  # !CNT7 & CNT10 & !CNT11
+  # !CNT6 & CNT10 & !CNT11
+  # !CNT5 & CNT10 & !CNT11
+  # !CNT4 & CNT10 & !CNT11
+  # !CNT3 & CNT10 & !CNT11
+  # !CNT1 & CNT10 & !CNT11
+  # CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & CNT7 & CNT8 & CNT9 & !CNT10
+  # !CNT8 & CNT10
+  # !CNT2 & CNT10
+  # !CNT0 & CNT10
+
+CNT10.ck  =>
+    CLK16
+
+CNT11.d  =>
+    CNT0 & CNT1 & CNT2 & CNT3 & CNT4 & CNT5 & CNT6 & CNT7 & CNT8 & CNT9 & CNT10 & !CNT11
+  # !CNT10 & CNT11
+  # !CNT8 & CNT11
+  # !CNT2 & CNT11
+  # !CNT0 & CNT11
+
+CNT11.ck  =>
+    CLK16
+
+DIV0.d  =>
+    !DIV0
+
+DIV0.ck  =>
+    CLK16
+
+DIV1.d  =>
+    !DIV0 & DIV1
+  # DIV0 & !DIV1
+
+DIV1.ck  =>
+    CLK16
+
+DIV2.d  =>
+    !DIV1 & DIV2
+  # !DIV0 & DIV2
+  # DIV0 & DIV1 & !DIV2
+
+DIV2.ck  =>
+    CLK16
+
+DIV3.d  =>
+    !DIV2 & DIV3
+  # !DIV1 & DIV3
+  # !DIV0 & DIV3
+  # DIV0 & DIV1 & DIV2 & !DIV3
+
+DIV3.ck  =>
+    CLK16
+
+END =>
+    
+
+HEARTBEAT_LED =>
+    !LEDCNT9
+
+LEDCNT0.d  =>
+    !LEDCNT0
+
+LEDCNT0.ck  =>
+    CLK4K8
+
+LEDCNT1.d  =>
+    !LEDCNT0 & LEDCNT1
+  # LEDCNT0 & !LEDCNT1
+
+LEDCNT1.ck  =>
+    CLK4K8
+
+LEDCNT2.d  =>
+    !LEDCNT1 & LEDCNT2
+  # !LEDCNT0 & LEDCNT2
+  # LEDCNT0 & LEDCNT1 & !LEDCNT2
+
+LEDCNT2.ck  =>
+    CLK4K8
+
+LEDCNT3.d  =>
+    !LEDCNT2 & LEDCNT3
+  # !LEDCNT1 & LEDCNT3
+  # !LEDCNT0 & LEDCNT3
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & !LEDCNT3
+
+LEDCNT3.ck  =>
+    CLK4K8
+
+LEDCNT4.d  =>
+    !LEDCNT3 & LEDCNT4
+  # !LEDCNT2 & LEDCNT4
+  # !LEDCNT1 & LEDCNT4
+  # !LEDCNT0 & LEDCNT4
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & LEDCNT3 & !LEDCNT4
+
+LEDCNT4.ck  =>
+    CLK4K8
+
+LEDCNT5.d  =>
+    !LEDCNT4 & LEDCNT5
+  # !LEDCNT3 & LEDCNT5
+  # !LEDCNT2 & LEDCNT5
+  # !LEDCNT1 & LEDCNT5
+  # !LEDCNT0 & LEDCNT5
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & LEDCNT3 & LEDCNT4 & !LEDCNT5
+
+LEDCNT5.ck  =>
+    CLK4K8
+
+LEDCNT6.d  =>
+    !LEDCNT5 & LEDCNT6
+  # !LEDCNT4 & LEDCNT6
+  # !LEDCNT3 & LEDCNT6
+  # !LEDCNT2 & LEDCNT6
+  # !LEDCNT1 & LEDCNT6
+  # !LEDCNT0 & LEDCNT6
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & LEDCNT3 & LEDCNT4 & LEDCNT5 & !LEDCNT6
+
+LEDCNT6.ck  =>
+    CLK4K8
+
+LEDCNT7.d  =>
+    !LEDCNT6 & LEDCNT7
+  # !LEDCNT5 & LEDCNT7
+  # !LEDCNT4 & LEDCNT7
+  # !LEDCNT3 & LEDCNT7
+  # !LEDCNT2 & LEDCNT7
+  # !LEDCNT1 & LEDCNT7
+  # !LEDCNT0 & LEDCNT7
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & LEDCNT3 & LEDCNT4 & LEDCNT5 & LEDCNT6 & !LEDCNT7
+
+LEDCNT7.ck  =>
+    CLK4K8
+
+LEDCNT8.d  =>
+    !LEDCNT7 & LEDCNT8
+  # !LEDCNT6 & LEDCNT8
+  # !LEDCNT5 & LEDCNT8
+  # !LEDCNT4 & LEDCNT8
+  # !LEDCNT3 & LEDCNT8
+  # !LEDCNT2 & LEDCNT8
+  # !LEDCNT1 & LEDCNT8
+  # !LEDCNT0 & LEDCNT8
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & LEDCNT3 & LEDCNT4 & LEDCNT5 & LEDCNT6 & LEDCNT7 & !LEDCNT8
+
+LEDCNT8.ck  =>
+    CLK4K8
+
+LEDCNT9.d  =>
+    !LEDCNT8 & LEDCNT9
+  # !LEDCNT7 & LEDCNT9
+  # !LEDCNT6 & LEDCNT9
+  # !LEDCNT5 & LEDCNT9
+  # !LEDCNT4 & LEDCNT9
+  # !LEDCNT3 & LEDCNT9
+  # !LEDCNT2 & LEDCNT9
+  # !LEDCNT1 & LEDCNT9
+  # !LEDCNT0 & LEDCNT9
+  # LEDCNT0 & LEDCNT1 & LEDCNT2 & LEDCNT3 & LEDCNT4 & LEDCNT5 & LEDCNT6 & LEDCNT7 & LEDCNT8 & !LEDCNT9
+
+LEDCNT9.ck  =>
+    CLK4K8
+
+RAM_EN_N =>
+    MREQ_N
+  # !A15 & BANK
+
+ROM_EN_N =>
+    MREQ_N
+  # !WR_N
+  # !BANK
+  # A15
+
+RST_C =>
+    CNT0 & CNT2 & CNT8 & CNT10 & CNT11
+
+SRAM_A16 =>
+    0 
+
+SRAM_OE_N =>
+    RD_N
+  # RAM_EN_N
+  # !ROM_EN_N
+
+SRAM_WE_N =>
+    WR_N
+  # RAM_EN_N
+  # !ROM_EN_N
+  # !RESET_N
+
+%END

@@ -1,0 +1,127 @@
+Name     KAYPRO_SRAM_CTRL;
+PartNo   01;
+Date     10/21/2026;
+Revision 24;
+Designer WAC;
+Company  Custom;
+Assembly None;
+Location None;
+Device   f1504ispplcc44;
+
+/*********************************************************
+ * INPUTS - LOCKED TO PCB
+ *********************************************************/
+PIN 43 = CLK16;
+PIN 33 = MREQ_N;
+PIN 36 = WR_N;
+PIN 29 = BANK;
+PIN 25 = A15;
+PIN 34 = RD_N;
+PIN 31 = RESET_N;
+
+/* JTAG */
+PIN 7  = TDI;
+PIN 13 = TMS;
+PIN 32 = TCK;
+PIN 38 = TDO;
+
+/*********************************************************
+ * OUTPUTS & PROPERTIES
+ *********************************************************/
+PIN 8  = CLK4;
+PIN 6  = CLK2;
+PIN 5  = CLK1;
+PIN 4  = CLK4K8;
+PIN 24 = ROM_EN_N;
+PIN 26 = RAM_EN_N;
+PIN 40 = SRAM_A16;
+PIN 27 = SRAM_WE_N;
+PIN 28 = SRAM_OE_N;
+PIN 9  = HEARTBEAT_LED;
+
+/* Global hardware-hardening optimizations for the ATF1504 */
+PROPERTY ATMEL {power = low};          /* Drops internal junction heat and thermal drift */
+
+/* Keep clocks slow to prevent vintage motherboard ringing */
+PROPERTY ATMEL {slew = CLK4 = slow};
+PROPERTY ATMEL {slew = CLK2 = slow};
+PROPERTY ATMEL {slew = CLK1 = slow};
+
+/* NOTE: ROM_EN_N and RAM_EN_N run at FAST slew rate by omitting the 'slow' */
+/* property. This maximizes the data hold window when the system is hot. */
+
+/*********************************************************
+ * INTERNAL REGISTERS
+ *********************************************************/
+NODE [DIV0..3], [CNT0..11], [LEDCNT0..9];
+
+[DIV0..3].ck    = CLK16;
+[CNT0..11].ck   = CLK16;
+[LEDCNT0..9].ck = CLK4K8;
+
+/* Clock Generation */
+DIV0.d = !DIV0;
+DIV1.d = DIV1 $ DIV0;
+DIV2.d = DIV2 $ (DIV1 & DIV0);
+DIV3.d = DIV3 $ (DIV2 & DIV1 & DIV0);
+
+CLK4 = DIV1;
+CLK2 = DIV2;
+CLK1 = DIV3;
+
+/* 4.8 kHz Keyboard Clock Divider (3334 states: 0 to 3333) */
+RST_C = (CNT11 & CNT10 & CNT8 & CNT2 & CNT0); 
+CNT0.d  = !CNT0  & !RST_C;
+CNT1.d  = (CNT1  $ CNT0) & !RST_C;
+CNT2.d  = (CNT2  $ (CNT1  & CNT0)) & !RST_C;
+CNT3.d  = (CNT3  $ (CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT4.d  = (CNT4  $ (CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT5.d  = (CNT5  $ (CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT6.d  = (CNT6  $ (CNT5  & CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT7.d  = (CNT7  $ (CNT6  & CNT5  & CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT8.d  = (CNT8  $ (CNT7  & CNT6  & CNT5  & CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT9.d  = (CNT9  $ (CNT8  & CNT7  & CNT6  & CNT5  & CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT10.d = (CNT10 $ (CNT9  & CNT8  & CNT7  & CNT6  & CNT5  & CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+CNT11.d = (CNT11 $ (CNT10 & CNT9  & CNT8  & CNT7  & CNT6  & CNT5  & CNT4  & CNT3  & CNT2  & CNT1  & CNT0)) & !RST_C;
+
+CLK4K8 = CNT11;
+
+/* LED Heartbeat */
+LEDCNT0.d = !LEDCNT0;
+LEDCNT1.d = LEDCNT1 $ LEDCNT0;
+LEDCNT2.d = LEDCNT2 $ (LEDCNT1 & LEDCNT0);
+LEDCNT3.d = LEDCNT3 $ (LEDCNT2 & LEDCNT1 & LEDCNT0);
+LEDCNT4.d = LEDCNT4 $ (LEDCNT3 & LEDCNT2 & LEDCNT1 & LEDCNT0);
+LEDCNT5.d = LEDCNT5 $ (LEDCNT4 & LEDCNT3 & LEDCNT2 & LEDCNT1 & LEDCNT0);
+LEDCNT6.d = LEDCNT6 $ (LEDCNT5 & LEDCNT4 & LEDCNT3 & LEDCNT2 & LEDCNT1 & LEDCNT0);
+LEDCNT7.d = LEDCNT7 $ (LEDCNT6 & LEDCNT5 & LEDCNT4 & LEDCNT3 & LEDCNT2 & LEDCNT1 & LEDCNT0);
+LEDCNT8.d = LEDCNT8 $ (LEDCNT7 & LEDCNT6 & LEDCNT5 & LEDCNT4 & LEDCNT3 & LEDCNT2 & LEDCNT1 & LEDCNT0);
+LEDCNT9.d = LEDCNT9 $ (LEDCNT8 & LEDCNT7 & LEDCNT6 & LEDCNT5 & LEDCNT4 & LEDCNT3 & LEDCNT2 & LEDCNT1 & LEDCNT0);
+
+HEARTBEAT_LED = !LEDCNT9;
+
+/* ========================================================= */
+/* GLITCH-PROOF BUS-ISOLATED UNIVERSAL MEMORY SELECT         */
+/* ========================================================= */
+
+/* ROM Enable: Low when MREQ is low, WR is high, BANK pullup is high (1), and A15 is low */
+ROM_EN_N  = !(!MREQ_N & WR_N & BANK & !A15);
+
+/* RAM Enable: Low when MREQ is low AND either BANK is low (0) OR A15 is high (1) */
+RAM_EN_N  = !(!MREQ_N & (!BANK # A15));
+
+/* ========================================================= */
+/* HARDWARE BUS-ISOLATION INTERLOCKS                         */
+/* ========================================================= */
+
+/* SRAM Write Control: Only allow writing when RAM is explicitly enabled, */
+/* WR_N is low, and the ROM is completely disabled. Forces high on reset. */
+SRAM_WE_N = WR_N # RAM_EN_N # !ROM_EN_N # !RESET_N;
+
+/* SRAM Read Control: Forcefully lock the SRAM's output buffers into a      */
+/* high-impedance (tri-state) mode if the Monitor ROM is currently active.   */
+SRAM_OE_N = RD_N # RAM_EN_N # !ROM_EN_N;
+
+SRAM_A16  = 'b'0;
+
+END;
