@@ -27,6 +27,12 @@ Instead of hunting through folders, you can access the core design files for thi
 * **Compiled JEDEC File:** [Ready-to-Program JED file](firmware/KAYPRO_SRAM_CTRL-6.jed)
 * **Compiled svf File:** [Ready-to-Program svf file](firmware/KAYPRO_SRAM_CTRL-6.svf)
 * *Note: Use the `.jed` file directly with your USB Blaster and the ATF15xx ISP software to program the chip.*
-* *Note: Use the `.svf` file directly with your modified USB Blaster Clone and UrJTAG (https://urjtag.sourceforge.io/) or OpenOCD (https://openocd.org/) software to program the chip.*
+* *Note: Use the `.svf` file directly with your modified USB Blaster Clone and UrJTAG or OpenOCD software to program the chip.*
 
-#
+
+### Resources
+ - USB Blaster Clone rev, C https://www.amazon.com/dp/B07F5H5LPZ.
+     - https://github.com/dsm/USB-Blaster_CH552 
+     - https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/ 
+ - UrJTAG (https://urjtag.sourceforge.io/)
+ - OpenOCD (https://openocd.org/) 
