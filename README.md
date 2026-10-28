@@ -62,3 +62,10 @@ Instead of hunting through folders, you can access the core design files for thi
  - [OpenOCD](https://openocd.org/)
 
 
+## ⚠️ Hardware Damage Disclaimer
+
+**CRITICAL WARNING:** This software interacts directly with physical hardware. By using this software, you acknowledge and agree that you are running it at your own risk.
+
+In addition to the terms outlined in the GNU General Public License v3.0 (GPL-3.0):
+* **No Liability:** The authors and contributors of this project shall not be held liable for any direct, indirect, incidental, or consequential damage to physical hardware, electronic components, peripherals, or systems resulting from the use, misuse, or failure of this software.
+* **No Warranty:** This software is provided "as-is" without any express or implied warranties. Physical mechanisms can behave unpredictably; it is your sole responsibility to implement proper safety cutoffs, monitor execution, and test in safe environments.
