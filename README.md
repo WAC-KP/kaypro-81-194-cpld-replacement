@@ -1,5 +1,5 @@
 # kaypro-81-194-cpld-replacement
-Replacement for the 1984 Kaypro Universal Board 81-194 LSI using an ATF1504 CPLD, AS6C1008 SRA and 16 mHz oscillator.
+Replacement for the 1984 Kaypro Universal Board 81-194 LSI using an ATF1504 CPLD, AS6C1008 SRAM and 16 mHz oscillator.
 
 ## License
 
@@ -11,6 +11,21 @@ This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.
 - **CRITICAL CONDITION:** If you modify the CPLD code or the PCB layout and choose to distribute or sell your new version, **you are legally required to make your modified source code and hardware design files publicly available** under this exact same GPLv3 license. 
 
 For the full legal text, see the accompanying `LICENSE` file.
+
+## Why this project
+
+A while back I purchased a nonworking Kaypro 2x as a parts computer. It was dirty and many of the screws were rusting. The keyboard jack was broken. The power supply was broken (literally). Otherwise everything else looked good. Comparison to a working 2x revealed a few bad RAM chips and the corrupted 81-194 LSI. Replacing the faulty ram and borrowing a working 81-194 resulted in a fully functional Kaypro 2X. 
+
+A web search revealed no viable solutions to the dead LSI chip. So I asked AI for help. At the suggestion (urging) of AI and to simplify code, the design moved away from RAM to SRAM. The end result was a working, stable Kaypro 2x. 
+
+Was it worth it? Perhaps, perhaps not. You can still find universal board Kaypros, working or not. PCBs are not too expensive until you hit shipping. Parts are reasonable but all combined you might just get lucky and find another Kaypro for less than the parts and labor.
+
+That said, I believe it was worth it, simply based on the learning process and the side result of a functional Kaypro.
+
+## Building and installing
+
+
+
 
 ## Downloads & Project Files
 
