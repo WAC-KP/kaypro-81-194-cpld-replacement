@@ -31,8 +31,10 @@ Instead of hunting through folders, you can access the core design files for thi
 
 
 ### Resources
- - USB Blaster Clone rev, C https://www.amazon.com/dp/B07F5H5LPZ.
+ - [USB Blaster Clone rev, C](https://www.amazon.com/dp/B07F5H5LPZ).
      - https://github.com/dsm/USB-Blaster_CH552 
      - https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/ 
- - UrJTAG (https://urjtag.sourceforge.io/)
- - OpenOCD (https://openocd.org/) 
+ - [UrJTAG](https://urjtag.sourceforge.io/)
+ - [OpenOCD](https://openocd.org/)
+ - [Microchip WinCUPL Product Page](https://www.microchip.com/en-us/development-tool/wincupl)
+ - 
