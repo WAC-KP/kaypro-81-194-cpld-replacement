@@ -17,10 +17,11 @@ For the full legal text, see the accompanying `LICENSE` file.
 Instead of hunting through folders, you can access the core design files for this project directly using the links below:
 
 ### 🛠️ Hardware & PCB Fabrication
-* **Schematic Diagram:** [View or Download Schematic PDF](hardware/Version 1/u29-1504.pdf)
-* **Gerber Files V1:** [Download V.1 PCB Fabrication ZIP](hardware/Version 1/production/u29-1504.zip)
-* **Gerber Files V2:** [Download V.2 PCB Fabrication ZIP](hardware/Version 2/production/u29-1504.zip)
-* *Note: The Gerber ZIP file can be uploaded directly to manufacturing services like JLCPCB, PCBWay, or OSH Park.
+* **Schematic Diagram:** [View or Download Schematic PDF](hardware/Version%201/u29-1504.pdf)
+* **Gerber Files V1:** [Download V1 PCB Fabrication ZIP](hardware/Version%201/production/u29-1504.zip)
+* **Gerber Files V2:** [Download V2 PCB Fabrication ZIP](hardware/Version%202/production/u29-1504.zip)
+* *Note: The Gerber ZIP file can be uploaded directly to manufacturing services like JLCPCB, PCBWay, or OSH Park. Version 2 is just a repositioning of components.
+
 
 
 ### 💾 Firmware & Source Code
@@ -53,8 +54,11 @@ Instead of hunting through folders, you can access the core design files for thi
 ### Resources
  - [USB Blaster Clone rev, C](https://www.amazon.com/dp/B07F5H5LPZ).
      - [Fixing a knockoff Altera USB Blaster that never worked](https://www.downtowndougbrown.com/2024/06/fixing-a-knockoff-altera-usb-blaster-that-never-worked/)
-     - [Firmware binary file](https://github.com/dsm/USB-Blaster_CH552) 
+     - [Firmware binary file](https://github.com/dsm/USB-Blaster_CH552)
+     - [WCHISPStudio](https://www.wch-ic.com/download/file?id=196)
+ - [Microchip WinCUPL Product Page](https://www.microchip.com/en-us/development-tool/wincupl)
+ - [ATMISP 7.3.1 Download (ZIP)](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/SoftwareLibrary/ATMISP_v7_3_1.zip)
  - [UrJTAG](https://urjtag.sourceforge.io/)
  - [OpenOCD](https://openocd.org/)
- - [Microchip WinCUPL Product Page](https://www.microchip.com/en-us/development-tool/wincupl)
+
 
