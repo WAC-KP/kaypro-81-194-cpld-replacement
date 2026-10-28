@@ -1,4 +1,4 @@
-# kaypro-81-194-cpld-replacement
+# Kaypro 81-194 cpld replacement
 Replacement for the 1984 Kaypro Universal Board 81-194 LSI using an ATF1504 CPLD, AS6C1008 SRAM and 16 mHz oscillator.
 
 ## License
@@ -44,14 +44,16 @@ Instead of hunting through folders, you can access the core design files for thi
 
 ---
 
-## Building and installing (brief notes)
+### Brief notes
 
 * The PCB is designed to replace both U29 (81-194) and U55 (74LS373). Separate the PCB into the two daughter boards and mount the components. The two boards are connected by a 16 wire ribbon cable.
 * A single RST connection is provided (see the PCB)
 * To minimize risk of socket damage only use rounded header pins designed for interfacing with DIP sockets. 
 * 0805 surface mount capacitors and resistors are used to help reduce clutter and they can still be hand soldered. 
 * External power pins can be used to supply the required 5v for programming the CPLD or the CPLD can be programmed with the board installed. 
-* A heartbeat LED is provided as a visual indicator of functioning AFT1504.  
+* A heartbeat LED is provided as a visual indicator of functioning AFT1504.
+* Remove all RAM chips. Remove U55. Remove failed 81-194 (U29)
+
 
 
 ### Compiling pld with WinCUPL II
@@ -80,6 +82,13 @@ Instead of hunting through folders, you can access the core design files for thi
  - [ATMISP 7.3.1 Download (ZIP)](https://ww1.microchip.com/downloads/aemDocuments/documents/MPD/SoftwareLibrary/ATMISP_v7_3_1.zip)
  - [UrJTAG](https://urjtag.sourceforge.io/)
  - [OpenOCD](https://openocd.org/)
+
+ <br>
+
+<img width="1024" height="768" alt="81-194-1" src="https://github.com/user-attachments/assets/558cc35a-06e2-4bec-851f-f9393e12e889" />
+Prototype Installed - forgive the oversized cable connectors. Rubber spacers stabilize the boards when cover installed.
+
+<br><br>
 
 
 ## ⚠️ Kaypro Hardware & Installation Disclaimer
