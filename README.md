@@ -12,3 +12,19 @@ This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.
 
 For the full legal text, see the accompanying `LICENSE` file.
 
+## Downloads & Project Files
+
+Instead of hunting through folders, you can access the core design files for this project directly using the links below:
+
+### 🛠️ Hardware & PCB Fabrication
+* **Schematic Diagram:** [View or Download Schematic PDF](hardware/Version 1/u29-1504.pdf)
+* **Gerber Files:** [Download V.1 PCB Fabrication ZIP](hardware/Version 1/production/u29-1504.zip)
+* **Gerber Files:** [Download V.2 PCB Fabrication ZIP](hardware/Version 2/production/u29-1504.zip)
+* *Note: The Gerber ZIP file can be uploaded directly to manufacturing services like JLCPCB, PCBWay, or OSH Park.*
+
+### 💾 Firmware & Source Code
+* **CPLD Source Code:** [ATF1504 PLD Source Code](firmware/KAYPRO_SRAM_CTRL-6.pld)
+* **Compiled JEDEC File:** [Ready-to-Program JED file](firmware/KAYPRO_SRAM_CTRL-6.jed)
+* **Compiled svf File:** [Ready-to-Program svf file](firmware/KAYPRO_SRAM_CTRL-6.svf)
+* *Note: Use the `.jed` file directly with your USB Blaster and the ATF15xx ISP software to program the chip.*
+* *Note: Use the `.svf` file directly with your modified USB Blaster Clone and UrJTAG or OpenOCD software to program the chip.*
