@@ -44,7 +44,7 @@ Instead of hunting through folders, you can access the core design files for thi
 
 ---
 
-## Building and installing
+## Building and installing (brief notes)
 
 * The PCB is designed to replace both U29 (81-194) and U55 (74LS373). Separate the PCB into the two daughter boards and mount the components. The two boards are connected by a 16 wire ribbon cable.
 * A single RST connection is provided (see the PCB)
