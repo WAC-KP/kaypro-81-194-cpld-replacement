@@ -30,18 +30,25 @@ Instead of hunting through folders, you can access the core design files for thi
 * *Note: Use the `.jed` file directly with your USB Blaster and the ATF15xx ISP software to program the chip.*
 * *Note: Use the `.svf` file directly with your modified USB Blaster Clone and UrJTAG or OpenOCD software to program the chip.*
 
-### Compiling pld
- cupl.exe -m1l -age -b -u PATH_TO\atmel.lib KAYPRO_SRAM_CTRL-6.pld  
- fit1504.exe KAYPRO_SRAM_CTRL-6.tt2 -device PLCC44 -preassign keep -jtag on  
+---
+
+
+### Compiling pld with WinCUPL II
+ &emsp;cupl.exe -m1l -age -b -u PATH_TO\atmel.lib KAYPRO_SRAM_CTRL-6.pld  
+ &emsp;fit1504.exe KAYPRO_SRAM_CTRL-6.tt2 -device PLCC44 -preassign keep -jtag on  
+ 
 
 ### Programming ATF1504AS with UrJtag
- #### run JTAG  
-  jtag> cable usbblaster  
-  jtag> detect  
-  jtag> part 0  
-  jtag> instruction length 10  
-  jtag> svf PATH_TO/KAYPRO_SRAM_CTRL-6.svf  
-        (programming may take a few minutes)
+ &emsp;run JTAG  
+  &emsp;&emsp;jtag> cable usbblaster  
+  &emsp;&emsp;jtag> detect  
+  &emsp;&emsp;jtag> part 0  
+  &emsp;&emsp;jtag> instruction length 10  
+  &emsp;&emsp;jtag> svf PATH_TO/KAYPRO_SRAM_CTRL-6.svf  
+  &emsp;&emsp;&emsp;(programming may take a few minutes)
+
+
+---  
 
 ### Resources
  - [USB Blaster Clone rev, C](https://www.amazon.com/dp/B07F5H5LPZ).
