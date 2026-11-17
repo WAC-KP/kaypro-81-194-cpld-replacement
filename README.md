@@ -31,7 +31,7 @@ Instead of hunting through folders, you can access the core design files for thi
 * **Schematic Diagram:** [View or Download Schematic PDF](hardware/Version%201/u29-1504.pdf)
 * **Gerber Files V1:** [Download V1 PCB Fabrication ZIP](hardware/Version%201/production/u29-1504.zip)
 * **Gerber Files V2:** [Download V2 PCB Fabrication ZIP](hardware/Version%202/production/u29-1504.zip)
-* **Gerber Files V3:** [Download V2 PCB Fabrication ZIP](hardware/Version%203/production/u29-1504.zip)
+* **Gerber Files V3:** [Download V3 PCB Fabrication ZIP](hardware/Version%203/production/u29-1504.zip)
 
 * *Note: The Gerber ZIP file can be uploaded directly to manufacturing services like JLCPCB, PCBWay, or OSH Park. Version 2 is just a repositioning of components.
 
