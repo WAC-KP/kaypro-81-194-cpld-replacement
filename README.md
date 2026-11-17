@@ -18,6 +18,8 @@ A while back I purchased a nonworking Kaypro 2x as a parts computer. It was dirt
 
 A web search revealed no viable solutions to the dead LSI chip. So I asked AI for help. At the suggestion (urging) of AI and to simplify code, the design moved away from RAM to SRAM. The end result was a working, stable Kaypro 2x. 
 
+Why SRAM? Choosing SRAM was to simplify the PCB design. Controlling DRAM would require an additional 10 lines to the ATF1504, resulting in a very crowded 2-layer PCB. Code was also simplified by moving to SDRAM. The main trade-off was the need to create a header connecting the PCB to the motherboard (data lines).
+
 Was it worth it? Perhaps, perhaps not. You can still find universal board Kaypros, working or not. Prototype PCBs are not too expensive until you add in shipping. Parts are reasonable but all combined you might just get lucky and find another Kaypro for less than the parts and labor.
 
 That said, I believe it was worth it, simply based on the learning process and the side result of a functional Kaypro.
