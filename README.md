@@ -31,8 +31,7 @@ Instead of hunting through folders, you can access the core design files for thi
 * **Schematic Diagram:** [View or Download Schematic PDF](hardware/Version%201/u29-1504.pdf)
 * **Gerber Files V1:** [Download V1 PCB Fabrication ZIP](hardware/Version%201/production/u29-1504.zip)
 * **Gerber Files V2:** [Download V2 PCB Fabrication ZIP](hardware/Version%202/production/u29-1504.zip)
-* **Gerber Files V2:** [Download V2 PCB Fabrication ZIP](hardware/Version%203<img width="1541" height="2055" alt="81-194-3a" src="https://github.com/user-attachments/assets/4712cac4-0e90-4d44-a5c4-7e97d655a903" />
-/production/u29-1504.zip)
+* **Gerber Files V3:** [Download V2 PCB Fabrication ZIP](hardware/Version%203/production/u29-1504.zip)
 
 * *Note: The Gerber ZIP file can be uploaded directly to manufacturing services like JLCPCB, PCBWay, or OSH Park. Version 2 is just a repositioning of components.
 
@@ -88,8 +87,7 @@ Instead of hunting through folders, you can access the core design files for thi
 
  <br>
 
-<img width="1024" height="768" alt="81-194-1" src="https://github.com/user-attachments/assets/558cc35a-06e2-4bec-851f-f9393e12e889" />
-Prototype Installed - forgive the oversized cable connectors. Rubber spacers stabilize the boards when cover installed.
+<img width="640" height="853" alt="81-194-3a" src="https://github.com/user-attachments/assets/4712cac4-0e90-4d44-a5c4-7e97d655a903" />
 
 <br><br>
 
