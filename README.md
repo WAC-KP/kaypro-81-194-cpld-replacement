@@ -90,7 +90,8 @@ Instead of hunting through folders, you can access the core design files for thi
  <br>
 
 <img width="640" height="853" alt="81-194-3a" src="https://github.com/user-attachments/assets/4712cac4-0e90-4d44-a5c4-7e97d655a903" />
-<br><i>Rubber pieces on the pcbs were added to help hold the boards in place (interference with the case).</i>
+<br><i>Rubber pieces on the pcbs were added to help hold the boards in place (interference with the case).
+<br>The hole in the center of the board is for future bodge wires should one try to implement CP/M 3.</i>
 <br><br>
 
 
